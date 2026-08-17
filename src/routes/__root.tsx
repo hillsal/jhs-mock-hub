@@ -78,14 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Hills Educational Consult | JHS Mock & BECE Predictions" },
+      { name: "description", content: "Hills Examination Board supports Ghanaian JHS schools with mock examinations and BECE prediction packages. Register your school and buy predictions online." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Hills Educational Consult | JHS Mock & BECE Predictions" },
+      { property: "og:description", content: "Hills Examination Board supports Ghanaian JHS schools with mock examinations and BECE prediction packages. Register your school and buy predictions online." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Hills Educational Consult | JHS Mock & BECE Predictions" },
+      { name: "twitter:description", content: "Hills Examination Board supports Ghanaian JHS schools with mock examinations and BECE prediction packages. Register your school and buy predictions online." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9b484273a419cb3b0746df5be780ec64/id-preview-f7f91388--c5d31eac-09f3-4106-aa10-be86d85e1d9f.lovable.app-1786986899131.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9b484273a419cb3b0746df5be780ec64/id-preview-f7f91388--c5d31eac-09f3-4106-aa10-be86d85e1d9f.lovable.app-1786986899131.png" },
     ],
     links: [
       {

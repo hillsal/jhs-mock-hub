@@ -15,11 +15,11 @@ export const Route = createFileRoute("/")({
         content:
           "Hills Examination Board supports Ghanaian JHS schools with mock examinations and BECE prediction packages. Register your school and buy predictions online.",
       },
-      { property: "og:title", content: "Hills Educational Consult | Hills Examination Board" },
+      { property: "og:title", content: "Hills Educational Consult | JHS Mock & BECE Predictions" },
       {
         property: "og:description",
         content:
-          "JHS school membership, mock examinations and BECE prediction packages for schools across Ghana.",
+          "Hills Examination Board supports Ghanaian JHS schools with mock examinations and BECE prediction packages. Register your school and buy predictions online.",
       },
     ],
   }),
