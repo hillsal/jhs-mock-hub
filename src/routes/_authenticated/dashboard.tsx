@@ -89,8 +89,8 @@ function Dashboard() {
                       {school.district}, {school.region} · {school.school_type}
                     </p>
                   </div>
-                  <Badge variant={school.status === "active" ? "default" : "secondary"}>
-                    {school.status}
+                  <Badge variant={school.membership_status === "active" ? "default" : "secondary"}>
+                    {school.membership_status}
                   </Badge>
                 </div>
                 <dl className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -128,13 +128,13 @@ function Dashboard() {
                         </div>
                         <div className="text-right">
                           <p className="text-lg font-bold text-primary">
-                            {formatGhs(Number(o.total_amount))}
+                            {formatGhs(Number(o.amount))}
                           </p>
                           <Badge
-                            variant={o.status === "paid" ? "default" : "secondary"}
+                            variant={o.payment_status === "paid" ? "default" : "secondary"}
                             className="mt-1"
                           >
-                            {o.status}
+                            {o.payment_status}
                           </Badge>
                         </div>
                       </CardContent>
