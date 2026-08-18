@@ -99,10 +99,16 @@ function Dashboard() {
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      Membership ID
+                      Serial / Membership number
                     </p>
                     <p className="font-mono text-lg font-bold text-primary">
                       {school.membership_id}
+                    </p>
+                    <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      Member PIN
+                    </p>
+                    <p className="font-mono text-lg font-bold tracking-[0.3em] text-primary">
+                      {school.member_pin}
                     </p>
                     <h1 className="mt-2 font-serif text-2xl font-bold">{school.school_name}</h1>
                     <p className="text-sm text-muted-foreground">
