@@ -17,7 +17,7 @@ export const Route = createFileRoute("/membership")({
       {
         name: "description",
         content:
-          "See Hills Examination Board mock types and BECE prediction packages, with per-candidate pricing for registered JHS schools in Ghana.",
+          "See Hills Examination Board mock types and BECE prediction packages, with flat pricing for registered JHS schools in Ghana.",
       },
       { property: "og:title", content: "JHS Membership & Prediction Packages" },
       {
@@ -65,8 +65,8 @@ function MembershipPage() {
           <div className="mx-auto max-w-6xl">
             <h1 className="text-3xl font-bold md:text-4xl">JHS Membership</h1>
             <p className="mt-3 max-w-2xl opacity-90">
-              Register once, then buy prediction packages for any mock examination. Pricing is
-              per candidate and set by the Hills Examination Board.
+              Register once (GHS 200 membership fee), then buy prediction packages for any mock
+              examination. Each prediction package is a flat GHS 1,000.00.
             </p>
           </div>
         </section>
@@ -123,13 +123,10 @@ function MembershipPage() {
                       <div>
                         <p className="text-2xl font-bold text-primary">
                           {formatGhs(Number(p.price_per_candidate))}
-                          <span className="text-sm font-normal text-muted-foreground">
-                            {" "}
-                            / candidate
-                          </span>
                         </p>
+                        <p className="text-xs text-muted-foreground">Flat price per package</p>
                         <Button asChild className="mt-4 w-full">
-                          <Link to="/register">Register &amp; buy</Link>
+                          <Link to="/register">Register & buy</Link>
                         </Button>
                       </div>
                     </CardContent>

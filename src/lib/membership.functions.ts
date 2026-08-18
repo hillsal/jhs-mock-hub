@@ -47,7 +47,16 @@ export const createOrder = createServerFn({ method: "POST" })
     }
 
     const unitPrice = Number(product.price_per_candidate);
-    const amount = Number((unitPrice * data.candidateCount).toFixed(2));
+    // Flat pricing: a one-time GHS 200 membership registration fee is charged
+    // only on a school's first order. The prediction price itself does not
+    // depend on the number of candidates.
+    const { data: priorOrders } = await supabase
+      .from("orders")
+      .select("id")
+      .eq("school_id", school.id)
+      .limit(1);
+    const registrationFee = (priorOrders?.length ?? 0) === 0 ? 200 : 0;
+    const amount = Number((unitPrice + registrationFee).toFixed(2));
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: order, error: orderError } = await supabaseAdmin
@@ -58,10 +67,11 @@ export const createOrder = createServerFn({ method: "POST" })
         mock_type_id: product.mock_type_id,
         candidate_count: data.candidateCount,
         unit_price: unitPrice,
+        registration_fee: registrationFee,
         amount,
         payment_status: "pending",
       })
-      .select("id, order_number, amount, currency, payment_status")
+      .select("id, order_number, amount, currency, payment_status, registration_fee")
       .single();
     if (orderError) throw new Error(orderError.message);
 

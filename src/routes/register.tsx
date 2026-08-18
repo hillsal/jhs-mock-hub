@@ -162,7 +162,7 @@ function RegisterPage() {
   );
   const product = products.find((p) => p.id === productId);
   const mock = catalogue?.mocks.find((m) => m.id === mockTypeId);
-  const total = product ? Number(product.price_per_candidate) * candidates : 0;
+  const total = product ? Number(product.price_per_candidate) + 200 : 0;
 
   function next() {
     if (step === 1) {
@@ -501,7 +501,7 @@ function RegisterPage() {
                       <div className="flex flex-wrap items-baseline justify-between gap-2">
                         <p className="font-semibold">{p.name}</p>
                         <p className="font-bold text-primary">
-                          {formatGhs(Number(p.price_per_candidate))} / candidate
+                          {formatGhs(Number(p.price_per_candidate))}
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
@@ -529,9 +529,10 @@ function RegisterPage() {
                       <Row label="Number of candidates" value={String(candidates)} />
                       <Row label="Prediction package" value={product?.name ?? "—"} />
                       <Row
-                        label="Price per candidate"
+                        label="Prediction package (flat)"
                         value={product ? formatGhs(Number(product.price_per_candidate)) : "—"}
                       />
+                      <Row label="Membership registration fee" value={formatGhs(200)} />
                       <div className="flex justify-between bg-secondary/50 px-4 py-3 font-bold">
                         <dt>Total amount</dt>
                         <dd className="text-primary">{formatGhs(total)}</dd>
