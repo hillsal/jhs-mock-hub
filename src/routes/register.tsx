@@ -128,6 +128,10 @@ function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
+  const [credentials, setCredentials] = useState<{
+    membership_id: string;
+    member_pin: string;
+  } | null>(null);
 
   const set = (k: keyof Form) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
 
