@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      member_login_attempts: {
+        Row: {
+          created_at: string
+          id: string
+          membership_id: string
+          succeeded: boolean
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          membership_id: string
+          succeeded?: boolean
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          membership_id?: string
+          succeeded?: boolean
+        }
+        Relationships: []
+      }
       mock_types: {
         Row: {
           created_at: string
@@ -288,8 +309,120 @@ export type Database = {
           },
         ]
       }
+      products: {
+        Row: {
+          academic_year: string | null
+          created_at: string
+          description: string | null
+          file_path: string | null
+          id: string
+          is_active: boolean
+          name: string
+          price: number
+          pricing_mode: string
+          product_type: string
+          sort_order: number
+          subject: string | null
+          updated_at: string
+        }
+        Insert: {
+          academic_year?: string | null
+          created_at?: string
+          description?: string | null
+          file_path?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          price?: number
+          pricing_mode?: string
+          product_type?: string
+          sort_order?: number
+          subject?: string | null
+          updated_at?: string
+        }
+        Update: {
+          academic_year?: string | null
+          created_at?: string
+          description?: string | null
+          file_path?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          price?: number
+          pricing_mode?: string
+          product_type?: string
+          sort_order?: number
+          subject?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      purchases: {
+        Row: {
+          access_expires_at: string | null
+          amount: number
+          created_at: string
+          currency: string
+          id: string
+          member_id: string
+          payment_channel: string | null
+          payment_status: string
+          product_id: string
+          purchased_at: string | null
+          quantity: number
+          transaction_reference: string | null
+          updated_at: string
+        }
+        Insert: {
+          access_expires_at?: string | null
+          amount: number
+          created_at?: string
+          currency?: string
+          id?: string
+          member_id: string
+          payment_channel?: string | null
+          payment_status?: string
+          product_id: string
+          purchased_at?: string | null
+          quantity?: number
+          transaction_reference?: string | null
+          updated_at?: string
+        }
+        Update: {
+          access_expires_at?: string | null
+          amount?: number
+          created_at?: string
+          currency?: string
+          id?: string
+          member_id?: string
+          payment_channel?: string | null
+          payment_status?: string
+          product_id?: string
+          purchased_at?: string | null
+          quantity?: number
+          transaction_reference?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "purchases_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "purchases_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       schools: {
         Row: {
+          academic_year: string
           contact_person: string | null
           coordinator_email: string | null
           coordinator_name: string | null
@@ -299,10 +432,10 @@ export type Database = {
           district: string
           head_teacher_name: string | null
           id: string
-          member_pin: string
           membership_id: string
           membership_status: string
           mock_candidates: number
+          pin_hash: string | null
           region: string
           school_address: string | null
           school_email: string
@@ -315,6 +448,7 @@ export type Database = {
           whatsapp_number: string | null
         }
         Insert: {
+          academic_year?: string
           contact_person?: string | null
           coordinator_email?: string | null
           coordinator_name?: string | null
@@ -324,10 +458,10 @@ export type Database = {
           district: string
           head_teacher_name?: string | null
           id?: string
-          member_pin?: string
           membership_id?: string
           membership_status?: string
           mock_candidates?: number
+          pin_hash?: string | null
           region: string
           school_address?: string | null
           school_email: string
@@ -340,6 +474,7 @@ export type Database = {
           whatsapp_number?: string | null
         }
         Update: {
+          academic_year?: string
           contact_person?: string | null
           coordinator_email?: string | null
           coordinator_name?: string | null
@@ -349,10 +484,10 @@ export type Database = {
           district?: string
           head_teacher_name?: string | null
           id?: string
-          member_pin?: string
           membership_id?: string
           membership_status?: string
           mock_candidates?: number
+          pin_hash?: string | null
           region?: string
           school_address?: string | null
           school_email?: string
@@ -398,6 +533,19 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      set_member_pin: {
+        Args: { _member_id: string; _pin: string }
+        Returns: undefined
+      }
+      verify_member_credentials: {
+        Args: { _membership_id: string; _pin: string }
+        Returns: {
+          id: string
+          membership_id: string
+          membership_status: string
+          school_name: string
+        }[]
       }
     }
     Enums: {
