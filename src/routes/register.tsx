@@ -237,7 +237,7 @@ function RegisterPage() {
       }
 
       const userId = signUpData.session.user.id;
-      const { error: schoolError } = await supabase.from("schools").insert({
+      const { data: newSchool, error: schoolError } = await supabase.from("schools").insert({
         user_id: userId,
         school_name: form.school_name.trim(),
         school_type: form.school_type,
