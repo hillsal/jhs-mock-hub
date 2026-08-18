@@ -255,8 +255,16 @@ function RegisterPage() {
         coordinator_email: form.coordinator_email.trim() || null,
         total_jhs_students: students,
         mock_candidates: candidates,
-      });
+      })
+        .select("membership_id, member_pin")
+        .single();
       if (schoolError) throw schoolError;
+      if (newSchool) {
+        setCredentials({
+          membership_id: newSchool.membership_id,
+          member_pin: newSchool.member_pin,
+        });
+      }
 
       const order = await createOrder({ data: { productId, candidateCount: candidates } });
       setOrderNumber(order.order_number);
