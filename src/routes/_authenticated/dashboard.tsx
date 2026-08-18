@@ -122,8 +122,8 @@ function Dashboard() {
                             {o.prediction_products?.name ?? "Prediction package"}
                           </p>
                           <p className="text-sm text-muted-foreground">
-                            {o.mock_types?.name} · {o.candidate_count} candidates ·{" "}
-                            {formatGhs(Number(o.unit_price))}/candidate
+                            {o.mock_types?.name} · {o.candidate_count} candidates
+                            {Number(o.registration_fee) > 0 && " · incl. registration fee"}
                           </p>
                         </div>
                         <div className="text-right">
