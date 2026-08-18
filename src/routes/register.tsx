@@ -506,6 +506,12 @@ function RegisterPage() {
                         <p className="font-semibold">{p.name}</p>
                         <p className="font-bold text-primary">
                           {formatGhs(Number(p.price_per_candidate))}
+                          {p.pricing_mode === "per_candidate" && (
+                            <span className="text-xs font-normal text-muted-foreground">
+                              {" "}
+                              per candidate
+                            </span>
+                          )}
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
