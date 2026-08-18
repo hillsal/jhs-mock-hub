@@ -32,6 +32,22 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
 });
 
 function Dashboard() {
+  const startPayment = useServerFn(initializePayment);
+  const [payingId, setPayingId] = useState<string | null>(null);
+
+  async function pay(orderId: string) {
+    setPayingId(orderId);
+    try {
+      const { authorizationUrl } = await startPayment({
+        data: { orderId, callbackUrl: `${window.location.origin}/payment` },
+      });
+      window.location.href = authorizationUrl;
+    } catch (err) {
+      setPayingId(null);
+      toast.error(err instanceof Error ? err.message : "Could not start the payment.");
+    }
+  }
+
   const { data, isLoading } = useQuery({
     queryKey: ["school-dashboard"],
     queryFn: async () => {
@@ -140,6 +156,17 @@ function Dashboard() {
                           >
                             {o.payment_status}
                           </Badge>
+                          {o.payment_status !== "paid" && (
+                            <div className="mt-2">
+                              <Button
+                                size="sm"
+                                disabled={payingId === o.id}
+                                onClick={() => void pay(o.id)}
+                              >
+                                {payingId === o.id ? "Redirecting…" : "Pay with Paystack"}
+                              </Button>
+                            </div>
+                          )}
                         </div>
                       </CardContent>
                     </Card>
