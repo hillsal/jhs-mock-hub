@@ -26,9 +26,10 @@ export const registerMemberSchema = z.object({
   academicYear: z.string().trim().min(4, "Enter the academic year").max(20),
 });
 
-export type RegisterMemberInput = z.infer<typeof registerMemberSchema>;
+export type RegisterMemberInput = z.input<typeof registerMemberSchema>;
+export type RegisterMemberValues = z.output<typeof registerMemberSchema>;
 
-export function parseRegisterMemberInput(input: unknown): RegisterMemberInput {
+export function parseRegisterMemberInput(input: unknown): RegisterMemberValues {
   return registerMemberSchema.parse(input);
 }
 

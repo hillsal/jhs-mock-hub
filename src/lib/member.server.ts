@@ -2,20 +2,9 @@ import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 export type ProductType = "mock" | "prediction" | "provision" | "training" | "other";
 
-export type RegisterMemberInput = {
-  organizationName: string;
-  contactPerson: string;
-  phone: string;
-  email: string;
-  region: string;
-  district: string;
-  address?: string;
-  candidates: number;
-  students: number;
-  academicYear: string;
-  schoolType?: string;
-  whatsapp?: string;
-};
+import type { RegisterMemberValues } from "@/lib/member.schemas";
+
+export type RegisterMemberInput = RegisterMemberValues;
 
 function randomPin() {
   const bytes = new Uint32Array(1);
