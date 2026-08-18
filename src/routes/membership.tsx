@@ -65,8 +65,8 @@ function MembershipPage() {
           <div className="mx-auto max-w-6xl">
             <h1 className="text-3xl font-bold md:text-4xl">JHS Membership</h1>
             <p className="mt-3 max-w-2xl opacity-90">
-              Register once, then buy prediction packages for any mock examination. Pricing is
-              per candidate and set by the Hills Examination Board.
+              Register once (GHS 200 membership fee), then buy prediction packages for any mock
+              examination. Each prediction package is a flat GHS 1,000.00.
             </p>
           </div>
         </section>
