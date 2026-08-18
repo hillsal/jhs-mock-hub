@@ -66,7 +66,8 @@ function MembershipPage() {
             <h1 className="text-3xl font-bold md:text-4xl">JHS Membership</h1>
             <p className="mt-3 max-w-2xl opacity-90">
               Register once (GHS 200 membership fee), then buy prediction packages for any mock
-              examination. Each prediction package is a flat GHS 1,000.00.
+              examination. BECE prediction packages are a flat GHS 1,000.00, while School Mock is
+              GHS 40.00 per candidate.
             </p>
           </div>
         </section>
@@ -124,7 +125,11 @@ function MembershipPage() {
                         <p className="text-2xl font-bold text-primary">
                           {formatGhs(Number(p.price_per_candidate))}
                         </p>
-                        <p className="text-xs text-muted-foreground">Flat price per package</p>
+                        <p className="text-xs text-muted-foreground">
+                          {p.pricing_mode === "per_candidate"
+                            ? "Per candidate"
+                            : "Flat price per package"}
+                        </p>
                         <Button asChild className="mt-4 w-full">
                           <Link to="/register">Register & buy</Link>
                         </Button>

@@ -162,7 +162,11 @@ function RegisterPage() {
   );
   const product = products.find((p) => p.id === productId);
   const mock = catalogue?.mocks.find((m) => m.id === mockTypeId);
-  const total = product ? Number(product.price_per_candidate) + 200 : 0;
+  const perCandidate = product?.pricing_mode === "per_candidate";
+  const packageTotal = product
+    ? Number(product.price_per_candidate) * (perCandidate ? candidates : 1)
+    : 0;
+  const total = product ? packageTotal + 200 : 0;
 
   function next() {
     if (step === 1) {
@@ -502,6 +506,12 @@ function RegisterPage() {
                         <p className="font-semibold">{p.name}</p>
                         <p className="font-bold text-primary">
                           {formatGhs(Number(p.price_per_candidate))}
+                          {p.pricing_mode === "per_candidate" && (
+                            <span className="text-xs font-normal text-muted-foreground">
+                              {" "}
+                              per candidate
+                            </span>
+                          )}
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>
@@ -529,8 +539,14 @@ function RegisterPage() {
                       <Row label="Number of candidates" value={String(candidates)} />
                       <Row label="Prediction package" value={product?.name ?? "—"} />
                       <Row
-                        label="Prediction package (flat)"
-                        value={product ? formatGhs(Number(product.price_per_candidate)) : "—"}
+                        label={
+                          perCandidate
+                            ? `Prediction package (${formatGhs(
+                                Number(product?.price_per_candidate ?? 0),
+                              )} × ${candidates} candidates)`
+                            : "Prediction package (flat)"
+                        }
+                        value={product ? formatGhs(packageTotal) : "—"}
                       />
                       <Row label="Membership registration fee" value={formatGhs(200)} />
                       <div className="flex justify-between bg-secondary/50 px-4 py-3 font-bold">
