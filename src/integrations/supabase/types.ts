@@ -299,6 +299,7 @@ export type Database = {
           district: string
           head_teacher_name: string | null
           id: string
+          member_pin: string
           membership_id: string
           membership_status: string
           mock_candidates: number
@@ -323,6 +324,7 @@ export type Database = {
           district: string
           head_teacher_name?: string | null
           id?: string
+          member_pin?: string
           membership_id?: string
           membership_status?: string
           mock_candidates?: number
@@ -347,6 +349,7 @@ export type Database = {
           district?: string
           head_teacher_name?: string | null
           id?: string
+          member_pin?: string
           membership_id?: string
           membership_status?: string
           mock_candidates?: number
