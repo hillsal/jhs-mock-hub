@@ -539,8 +539,14 @@ function RegisterPage() {
                       <Row label="Number of candidates" value={String(candidates)} />
                       <Row label="Prediction package" value={product?.name ?? "—"} />
                       <Row
-                        label="Prediction package (flat)"
-                        value={product ? formatGhs(Number(product.price_per_candidate)) : "—"}
+                        label={
+                          perCandidate
+                            ? `Prediction package (${formatGhs(
+                                Number(product?.price_per_candidate ?? 0),
+                              )} × ${candidates} candidates)`
+                            : "Prediction package (flat)"
+                        }
+                        value={product ? formatGhs(packageTotal) : "—"}
                       />
                       <Row label="Membership registration fee" value={formatGhs(200)} />
                       <div className="flex justify-between bg-secondary/50 px-4 py-3 font-bold">
