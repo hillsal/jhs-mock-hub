@@ -55,6 +55,7 @@ export type Database = {
           order_number: string
           payment_status: string
           product_id: string
+          registration_fee: number
           school_id: string
           unit_price: number
           updated_at: string
@@ -69,6 +70,7 @@ export type Database = {
           order_number?: string
           payment_status?: string
           product_id: string
+          registration_fee?: number
           school_id: string
           unit_price: number
           updated_at?: string
@@ -83,6 +85,7 @@ export type Database = {
           order_number?: string
           payment_status?: string
           product_id?: string
+          registration_fee?: number
           school_id?: string
           unit_price?: number
           updated_at?: string
