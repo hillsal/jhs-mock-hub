@@ -444,7 +444,7 @@ export type Database = {
           school_type: string
           total_jhs_students: number
           updated_at: string
-          user_id: string
+          user_id: string | null
           whatsapp_number: string | null
         }
         Insert: {
@@ -470,7 +470,7 @@ export type Database = {
           school_type?: string
           total_jhs_students?: number
           updated_at?: string
-          user_id: string
+          user_id?: string | null
           whatsapp_number?: string | null
         }
         Update: {
@@ -496,7 +496,7 @@ export type Database = {
           school_type?: string
           total_jhs_students?: number
           updated_at?: string
-          user_id?: string
+          user_id?: string | null
           whatsapp_number?: string | null
         }
         Relationships: []
