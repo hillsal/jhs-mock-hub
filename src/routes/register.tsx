@@ -162,7 +162,7 @@ function RegisterPage() {
   );
   const product = products.find((p) => p.id === productId);
   const mock = catalogue?.mocks.find((m) => m.id === mockTypeId);
-  const total = product ? Number(product.price_per_candidate) * candidates : 0;
+  const total = product ? Number(product.price_per_candidate) + 200 : 0;
 
   function next() {
     if (step === 1) {
