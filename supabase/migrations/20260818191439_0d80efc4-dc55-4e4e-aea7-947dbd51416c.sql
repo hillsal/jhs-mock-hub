@@ -1,0 +1,1 @@
+UPDATE public.prediction_products SET price_per_candidate = 500, updated_at = now() WHERE name ILIKE 'Core%Subject%';
