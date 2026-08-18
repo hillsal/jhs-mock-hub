@@ -598,6 +598,30 @@ function RegisterPage() {
                     <Check className="size-7 text-primary" />
                   </div>
                   <h3 className="font-serif text-lg font-bold">Registration complete</h3>
+                  {credentials && (
+                    <div className="mx-auto grid max-w-md gap-3 sm:grid-cols-2">
+                      <div className="rounded-lg border border-border bg-secondary/40 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                          Serial / Membership number
+                        </p>
+                        <p className="mt-1 font-mono text-base font-bold text-primary">
+                          {credentials.membership_id}
+                        </p>
+                      </div>
+                      <div className="rounded-lg border border-border bg-secondary/40 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                          Member PIN
+                        </p>
+                        <p className="mt-1 font-mono text-base font-bold tracking-[0.3em] text-primary">
+                          {credentials.member_pin}
+                        </p>
+                      </div>
+                      <p className="sm:col-span-2 text-xs text-muted-foreground">
+                        Keep these safe — your serial number and PIN identify your school for all
+                        mock and prediction services.
+                      </p>
+                    </div>
+                  )}
                   <p className="text-sm text-muted-foreground">
                     Your school account has been created and order{" "}
                     <span className="font-semibold text-foreground">{orderNumber}</span> is
