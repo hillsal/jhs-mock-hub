@@ -238,6 +238,7 @@ export type Database = {
           name: string
           pdf_path: string | null
           price_per_candidate: number
+          pricing_mode: string
           sort_order: number
           subjects: string[]
           updated_at: string
@@ -254,6 +255,7 @@ export type Database = {
           name: string
           pdf_path?: string | null
           price_per_candidate?: number
+          pricing_mode?: string
           sort_order?: number
           subjects?: string[]
           updated_at?: string
@@ -270,6 +272,7 @@ export type Database = {
           name?: string
           pdf_path?: string | null
           price_per_candidate?: number
+          pricing_mode?: string
           sort_order?: number
           subjects?: string[]
           updated_at?: string
