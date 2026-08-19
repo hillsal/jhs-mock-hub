@@ -18,6 +18,7 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedPaymentRouteImport } from './routes/_authenticated/payment'
+import { Route as BuyMockRouteImport } from './routes/buy.mock'
 import { Route as ApiPublicPaystackWebhookRouteImport } from './routes/api/public/paystack-webhook'
 
 const IndexRoute = IndexRouteImport.update({
@@ -64,6 +65,11 @@ const AuthenticatedPaymentRoute = AuthenticatedPaymentRouteImport.update({
   path: '/payment',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const BuyMockRoute = BuyMockRouteImport.update({
+  id: '/buy/mock',
+  path: '/buy/mock',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicPaystackWebhookRoute =
   ApiPublicPaystackWebhookRouteImport.update({
     id: '/api/public/paystack-webhook',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/payment': typeof AuthenticatedPaymentRoute
+  '/buy/mock': typeof BuyMockRoute
   '/api/public/paystack-webhook': typeof ApiPublicPaystackWebhookRoute
 }
 export interface FileRoutesByTo {
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/payment': typeof AuthenticatedPaymentRoute
+  '/buy/mock': typeof BuyMockRoute
   '/api/public/paystack-webhook': typeof ApiPublicPaystackWebhookRoute
 }
 export interface FileRoutesById {
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/payment': typeof AuthenticatedPaymentRoute
+  '/buy/mock': typeof BuyMockRoute
   '/api/public/paystack-webhook': typeof ApiPublicPaystackWebhookRoute
 }
 export interface FileRouteTypes {
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/dashboard'
     | '/payment'
+    | '/buy/mock'
     | '/api/public/paystack-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/dashboard'
     | '/payment'
+    | '/buy/mock'
     | '/api/public/paystack-webhook'
   id:
     | '__root__'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/_authenticated/dashboard'
     | '/_authenticated/payment'
+    | '/buy/mock'
     | '/api/public/paystack-webhook'
   fileRoutesById: FileRoutesById
 }
@@ -151,6 +163,7 @@ export interface RootRouteChildren {
   MembershipRoute: typeof MembershipRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  BuyMockRoute: typeof BuyMockRoute
   ApiPublicPaystackWebhookRoute: typeof ApiPublicPaystackWebhookRoute
 }
 
@@ -219,6 +232,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPaymentRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/buy/mock': {
+      id: '/buy/mock'
+      path: '/buy/mock'
+      fullPath: '/buy/mock'
+      preLoaderRoute: typeof BuyMockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/paystack-webhook': {
       id: '/api/public/paystack-webhook'
       path: '/api/public/paystack-webhook'
@@ -250,6 +270,7 @@ const rootRouteChildren: RootRouteChildren = {
   MembershipRoute: MembershipRoute,
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  BuyMockRoute: BuyMockRoute,
   ApiPublicPaystackWebhookRoute: ApiPublicPaystackWebhookRoute,
 }
 export const routeTree = rootRouteImport
