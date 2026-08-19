@@ -36,3 +36,23 @@ export function parseRegisterMemberInput(input: unknown): RegisterMemberValues {
 export function parseProductType(value: unknown): ProductType | undefined {
   return PRODUCT_TYPES.includes(value as ProductType) ? (value as ProductType) : undefined;
 }
+
+export const productSchema = z.object({
+  id: z.string().uuid().optional(),
+  name: z.string().trim().min(2, "Enter a product name").max(160),
+  productType: z.enum(PRODUCT_TYPES),
+  description: z.string().trim().max(1000).optional().or(z.literal("")),
+  price: z.coerce.number().min(0).max(1_000_000),
+  pricingMode: z.enum(["flat", "per_candidate"]).default("flat"),
+  academicYear: z.string().trim().max(20).optional().or(z.literal("")),
+  subject: z.string().trim().max(120).optional().or(z.literal("")),
+  filePath: z.string().trim().max(300).optional().or(z.literal("")),
+  isActive: z.boolean().default(true),
+});
+
+export type ProductInput = z.input<typeof productSchema>;
+export type ProductValues = z.output<typeof productSchema>;
+
+export function parseProductInput(input: unknown): ProductValues {
+  return productSchema.parse(input);
+}
