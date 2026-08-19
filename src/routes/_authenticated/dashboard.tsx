@@ -104,12 +104,11 @@ function Dashboard() {
                     <p className="font-mono text-lg font-bold text-primary">
                       {school.membership_id}
                     </p>
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      Member PIN
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      Your PIN is stored securely and never displayed. Contact the administrator if
+                      you need it reset.
                     </p>
-                    <p className="font-mono text-lg font-bold tracking-[0.3em] text-primary">
-                      {school.member_pin}
-                    </p>
+
                     <h1 className="mt-2 font-serif text-2xl font-bold">{school.school_name}</h1>
                     <p className="text-sm text-muted-foreground">
                       {school.district}, {school.region} · {school.school_type}
