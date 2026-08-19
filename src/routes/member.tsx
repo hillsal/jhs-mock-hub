@@ -17,9 +17,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { formatGhs } from "@/lib/ghana";
 
 export const Route = createFileRoute("/member")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    reference: typeof search["reference"] === "string" ? search["reference"] : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { reference?: string } =>
+    typeof search["reference"] === "string" ? { reference: search["reference"] } : {},
+
   head: () => ({
     meta: [
       { title: "My Member Account | Hills Examination Board" },
